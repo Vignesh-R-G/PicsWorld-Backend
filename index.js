@@ -7,7 +7,7 @@ const searchrouter=require('./Routers/searchrouter')
 const commentrouter=require('./Routers/commentrouter')
 const likerouter=require('./Routers/likerouter')
 const cors=require('cors')
-//const connection=require('./Connection/connection')
+
 require('dotenv/config')
 
 const app=express()
