@@ -4,20 +4,6 @@ const uploadschema=require('../Models/uploadschema')
 const jwt=require('jsonwebtoken')
 require('dotenv/config')
 
-exports.upload=async (req,res)=>{
-        const uploaddata=await new uploadschema({
-            Title:req.body.title,
-            Description:req.body.description,
-            Category:req.body.category,
-            Imageurl:req.body.imageurl,
-            PostedBy:req.body.postedby
-        })
-        await uploaddata.save()
-        res.json({status:true,msg:"Post uploaded successfully"})
-    
-        
-}
-
 exports.getAllPosts=async (req,res)=>{
 
     try{

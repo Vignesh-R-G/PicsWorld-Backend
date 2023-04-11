@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use(morgan('dev'))
-
+app.use(express.static('Public'))
 
 app.use("/user",userrouter)
 app.use("/profile",uploadrouter)

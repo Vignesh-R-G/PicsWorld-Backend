@@ -1,8 +1,24 @@
 const express=require('express')
 const uploadcontroller=require("../Controllers/uploadcontroller")
+const uploadMiddleware = require('../Middleware/MulterMiddleware')
 const router=express.Router()
+const uploadschema=require('../Models/uploadschema')
 
-router.route("/upload").post(uploadcontroller.upload)
+router.post("/upload",uploadMiddleware.single('photo'),async(req,res)=>{
+    const photo=req.file.filename
+    console.log(photo)
+    const uploaddata=await new uploadschema({
+        Title:req.body.title,
+        Description:req.body.description,
+        Category:req.body.category,
+        photo:photo,
+        PostedBy:req.body.postedby,
+    })
+    await uploaddata.save()
+    res.json({status:true,msg:"Post uploaded successfully"})
+})
+
+
 router.route("/getAllPosts").get(uploadcontroller.getAllPosts)
 
 module.exports=router

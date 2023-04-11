@@ -30,11 +30,12 @@ exports.getlike=async(req,res)=>{
 exports.checklike=async(req,res)=>{
     try{
         const likes=await likeschema.findOne({$and:[{Name:req.body.name},{PostId:req.body.postid}]})
+        const totallike=await likeschema.find({PostId:req.body.postid}).count()
         if(likes){
-            res.json({status:true,likeid:likes._id})
+            res.json({status:true,likeid:likes._id,totallike:totallike})
         }
         else{
-            res.json({status:false})
+            res.json({status:false,totallike:totallike})
         }
     }
     catch(err){

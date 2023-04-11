@@ -1,6 +1,7 @@
 const express=require('express')
 const mongoose=require('mongoose')
 const userschema=require('../Models/userschema')
+const uploadschema=require('../Models/uploadschema')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 require('dotenv/config')
@@ -64,4 +65,14 @@ exports.verify=async(req,res)=>{
         res.json({status:false})
     }
 
+}
+
+exports.userposts=async(req,res)=>{
+    const posts=await uploadschema.find({PostedBy:req.params.username}).sort({Date:-1})
+    if(posts.length>0){
+        res.json({status:true,msg:posts})
+    }
+    else{
+        res.json({status:false,msg:"No posts Found"})
+    }
 }

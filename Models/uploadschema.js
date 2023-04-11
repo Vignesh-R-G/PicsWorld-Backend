@@ -15,7 +15,7 @@ const uploadschema=mongoose.Schema({
         type:String,
         required:true
     },
-    Imageurl:{
+    photo:{
         type:String,
         required:true
     },
