@@ -5,6 +5,7 @@ exports.postlike=async(req,res)=>{
     try{
         const like=await new likeschema({
             Name:req.body.name,
+            Email:req.body.email,
             PostId:req.body.postid,
             Like:req.body.like,
         })
@@ -29,7 +30,7 @@ exports.getlike=async(req,res)=>{
 
 exports.checklike=async(req,res)=>{
     try{
-        const likes=await likeschema.findOne({$and:[{Name:req.body.name},{PostId:req.body.postid}]})
+        const likes=await likeschema.findOne({$and:[{Email:req.body.email},{PostId:req.body.postid}]})
         const totallike=await likeschema.find({PostId:req.body.postid}).count()
         if(likes){
             res.json({status:true,likeid:likes._id,totallike:totallike})

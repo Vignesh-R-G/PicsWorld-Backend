@@ -13,6 +13,7 @@ router.post("/upload",uploadMiddleware.single('photo'),async(req,res)=>{
         Category:req.body.category,
         photo:photo,
         PostedBy:req.body.postedby,
+        Email:req.body.postedemail
     })
     await uploaddata.save()
     res.json({status:true,msg:"Post uploaded successfully"})
@@ -20,5 +21,6 @@ router.post("/upload",uploadMiddleware.single('photo'),async(req,res)=>{
 
 
 router.route("/getAllPosts").get(uploadcontroller.getAllPosts)
+router.route("/deletepost/:id").delete(uploadcontroller.deletePosts)
 
 module.exports=router

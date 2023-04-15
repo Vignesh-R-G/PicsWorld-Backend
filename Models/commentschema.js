@@ -9,6 +9,11 @@ const commentschema=mongoose.Schema({
         required:true,
         trim:true
     },
+    Email:{
+        type:String,
+        trim:true,
+        required:true
+    },
     Comment:{
         type:String,
         required:true

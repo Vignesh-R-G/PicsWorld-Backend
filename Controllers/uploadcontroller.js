@@ -15,3 +15,13 @@ exports.getAllPosts=async (req,res)=>{
     }
 }
 
+exports.deletePosts=async(req,res)=>{
+    try{
+        const deletepost=await uploadschema.deleteOne({_id:req.params.id})
+        res.json({status:true,msg:deletepost})
+    }
+    catch(err){
+        res.json({status:false,msg:"Error occured in deleting the posts"})
+    }
+}
+

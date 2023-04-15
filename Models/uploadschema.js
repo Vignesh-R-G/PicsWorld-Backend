@@ -23,6 +23,11 @@ const uploadschema=mongoose.Schema({
         type:String,
         required:true
     },
+    Email:{
+        type:String,
+        trim:true,
+        required:true
+    },
     PostedDate:{
         type:Date,
         default:Date.now()

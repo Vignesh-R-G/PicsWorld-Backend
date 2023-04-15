@@ -9,6 +9,11 @@ const likeschema=mongoose.Schema({
         required:true,
         trim:true
     },
+    Email:{
+        type:String,
+        trim:true,
+        required:true
+    },
     Like:{
         type:Boolean,
         default:false

@@ -6,6 +6,7 @@ exports.postcomment=async(req,res)=>{
     const comment=await new commentschema({
         PostId:req.body.postid,
         UserName:req.body.username,
+        Email:req.body.useremail,
         Comment:req.body.comment
     })
     await comment.save()
