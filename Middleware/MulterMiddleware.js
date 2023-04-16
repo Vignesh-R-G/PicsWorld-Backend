@@ -4,7 +4,7 @@ const path=require('path')
 
 const storage=multer.diskStorage({
     destination:function(req,file,cb){
-        cb(null,"../Public/Uploads")
+        cb(null,"./Public/Uploads")
     },
     filename:function(req,file,cb){
         cb(null,`${uuidv4()}_${path.extname(file.originalname)}`)
