@@ -4,7 +4,7 @@ const path=require('path')
 
 const storage=multer.diskStorage({
     destination:function(req,file,cb){
-        cb(null,"./public/uploads")
+        cb(null,"https://pics-world-backend-r7e4.onrender.com/uploads")
     },
     filename:function(req,file,cb){
         cb(null,`${uuidv4()}_${path.extname(file.originalname)}`)
