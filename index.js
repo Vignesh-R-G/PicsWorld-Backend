@@ -6,6 +6,7 @@ const uploadrouter=require('./Routers/uploadrouter')
 const searchrouter=require('./Routers/searchrouter')
 const commentrouter=require('./Routers/commentrouter')
 const likerouter=require('./Routers/likerouter')
+const followrouter=require('./Routers/followrouter')
 const cors=require('cors')
 
 require('dotenv/config')
@@ -22,6 +23,7 @@ app.use("/profile",uploadrouter)
 app.use("/search",searchrouter)
 app.use('/comments',commentrouter)
 app.use('/like',likerouter)
+app.use('/follow',followrouter)
 
 const PORT=process.env.PORT
 app.listen(PORT,()=>{
