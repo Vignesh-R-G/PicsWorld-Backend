@@ -15,6 +15,23 @@ exports.addfollow=async(req,res)=>{
     }
 }
 
+exports.isfollowing=async(req,res)=>{
+    try{
+        const useremail=await req.body.useremail
+        const searchuseremail=await req.body.searchuseremail
+        const isfollow=await followschema.find({$and:[{From:useremail},{To:searchuseremail}]})
+        if(isfollow.length>0){
+            res.json({status:true,msg:"Following"})
+        }
+        else{
+            res.json({status:false,msg:"Not following"})
+        }
+    }
+    catch(err){
+        res.json({status:false,msg:"Error occured in isfollowing"})
+    }
+}
+
 exports.getfollowers=async(req,res)=>{
     try{
         const followers=await followschema.find({To:req.params.email})
