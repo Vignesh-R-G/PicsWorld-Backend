@@ -5,7 +5,15 @@ const followschema=mongoose.Schema({
         type:String,
         required:true
     },
+    FromName:{
+        type:String,
+        required:true
+    },
     To:{
+        type:String,
+        required:true
+    },
+    ToName:{
         type:String,
         required:true
     }

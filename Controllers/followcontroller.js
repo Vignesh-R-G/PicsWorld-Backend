@@ -5,7 +5,9 @@ exports.addfollow=async(req,res)=>{
     try{
         const follow=await new followschema({
             From:req.body.from,
-            To:req.body.to
+            To:req.body.to,
+            FromName:req.body.fromname,
+            ToName:req.body.toname
         })
         await follow.save()
         res.json({status:true,msg:follow})
@@ -55,6 +57,18 @@ exports.getfollowing=async(req,res)=>{
     }
     catch(err){
         res.json({status:false,msg:"Error occured in getfollowing"})
+    }
+}
+
+exports.unfollow=async(req,res)=>{
+    try{
+        const useremail=await req.params.useremail
+        const searchuseremail=await req.params.searchuseremail
+        const deletefollow=await followschema.deleteOne({To:searchuseremail})
+        res.json({status:true,msg:deletefollow})
+    }
+    catch(err){
+        res.json({status:false,msg:"Error occured in Unfollow"})
     }
 }
 
