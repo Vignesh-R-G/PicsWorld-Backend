@@ -4,6 +4,19 @@ const uploadschema=require('../Models/uploadschema')
 const jwt=require('jsonwebtoken')
 require('dotenv/config')
 
+exports.uploadPost=async(req,res)=>{
+    const uploaddata=await new uploadschema({
+        Title:req.body.title,
+        Description:req.body.description,
+        Category:req.body.category,
+        photo:req.body.image,
+        PostedBy:req.body.postedby,
+        Email:req.body.postedemail
+    })
+    await uploaddata.save()
+    res.json({status:true,msg:"Post uploaded successfully"})
+}
+
 exports.getAllPosts=async (req,res)=>{
 
     try{
@@ -24,4 +37,6 @@ exports.deletePosts=async(req,res)=>{
         res.json({status:false,msg:"Error occured in deleting the posts"})
     }
 }
+
+
 

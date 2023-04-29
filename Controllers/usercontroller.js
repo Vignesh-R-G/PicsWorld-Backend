@@ -129,6 +129,21 @@ exports.getprofile=async(req,res)=>{
         }
     }
     catch(e){
-        res.json({status:false,msg:"Error occured in setting the profiole image"})
+        res.json({status:false,msg:"Error occured in setting the profile image"})
     }
+}
+
+exports.uploadprofile=async(req,res)=>{
+    const uploaddata=await new profileschema({
+        Name:req.body.name,
+        Email:req.body.email,
+        Image:req.body.image
+    })
+    await uploaddata.save()
+    res.json({status:true,msg:"Post uploaded successfully"})
+}
+
+exports.updateprofile=async(req,res)=>{
+    const profile=await profileschema.updateOne({Email:req.body.email},{$set:{Image:req.body.image}})
+    res.json({status:true,msg:"Post uploaded successfully"})
 }
