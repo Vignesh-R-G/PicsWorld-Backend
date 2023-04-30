@@ -51,7 +51,7 @@ exports.login=async(req,res)=>{
 }
 
 exports.verify=async(req,res)=>{
-    const token=await req.body.token
+    const token=await req.params.token
     try{
         const tokenverify=await jwt.verify(token,process.env.SECRETKEY,async(err,decoded)=>{
             if(err){

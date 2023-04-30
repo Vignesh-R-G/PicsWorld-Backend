@@ -4,7 +4,7 @@ const router=express.Router()
 
 router.route("/register").post(usercontroller.signup)
 router.route("/login").post(usercontroller.login)
-router.route("/verify").post(usercontroller.verify)
+router.route("/verify/:token").post(usercontroller.verify)
 router.route("/posts/:useremail").get(usercontroller.userposts)
 router.route("/addbio").post(usercontroller.addbio)
 router.route("/editbio").put(usercontroller.editbio)
